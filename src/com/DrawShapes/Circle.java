@@ -1,4 +1,5 @@
 package com.DrawShapes;
+import java.awt.*;
 import java.lang.Math;
 
 public class Circle extends Shape {
@@ -41,6 +42,14 @@ public class Circle extends Shape {
         return 2 * Math.PI * this.radius;
     }
 
+
+
+    @Override
+    public void render(Graphics2D g2d) {
+        g2d.setColor( Color.decode( this.getColor() ) );
+        g2d.fillArc( this.getX(), this.getY(), this.getRadius(), this.getRadius(), 0, 360 );
+        g2d.drawArc( this.getX(), this.getY(), this.getRadius(), this.getRadius(), 0, 360 );
+    }
 
 
 

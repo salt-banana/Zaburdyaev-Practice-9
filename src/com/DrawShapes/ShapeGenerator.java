@@ -54,7 +54,7 @@ public class ShapeGenerator {
 
 
 
-    public Rectangle getRectAtRandPos() {
+    public Rectangle genRectAtRandPos() {
 
         this.genProps();
 
@@ -67,7 +67,7 @@ public class ShapeGenerator {
 
 
 
-    public Square getSquareAtRandPos() {
+    public Square genSquareAtRandPos() {
 
         this.genProps();
 

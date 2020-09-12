@@ -17,7 +17,7 @@ public class PanelAnim extends JPanel implements ActionListener {
 
 
 
-    private final int FRAME_DURATION = 120;
+    private final int FRAME_DURATION = 80;
 
 
 

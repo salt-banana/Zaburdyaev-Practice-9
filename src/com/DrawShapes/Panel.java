@@ -2,12 +2,15 @@ package com.DrawShapes;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Panel extends JPanel {
 
     private Random random = new Random();
     private ShapeGenerator shapeGen = new ShapeGenerator();
+
+    private ArrayList<Shape> shapes = new ArrayList<>();
 
 
     private final int WINDOW_WIDTH = 800;
@@ -22,6 +25,45 @@ public class Panel extends JPanel {
 
     public Panel() {
         this.setPreferredSize(new Dimension(WINDOW_WIDTH,WINDOW_HEIGHT));
+        this.genShapes();
+    }
+
+
+
+    private void genShapes() {
+
+        this.shapes.clear();
+
+
+
+        int shapesToGen = 20;
+        int shapeCode;
+
+
+        while (shapesToGen > 0) {
+
+            shapeCode = random.nextInt(AMOUNT_OF_SHAPES);
+
+            switch (shapeCode) {
+
+                case CIRCLE:
+                    this.shapes.add( shapeGen.genCircleAtRandPos() );
+                    break;
+                case RECT:
+                    this.shapes.add( shapeGen.genRectAtRandPos() );
+                    break;
+                case SQUARE:
+                    this.shapes.add( shapeGen.genSquareAtRandPos() );
+                    break;
+                default:
+                    break;
+
+            }
+
+            --shapesToGen;
+
+        }
+
     }
 
 
@@ -35,43 +77,9 @@ public class Panel extends JPanel {
 
 
 
-        int shapesToDraw = 20;
-
-
-
-        while (shapesToDraw > 0) {
-
-            int shapeCode = random.nextInt(AMOUNT_OF_SHAPES);
-
-            switch (shapeCode) {
-
-                case CIRCLE:
-                    Circle circle = shapeGen.genCircleAtRandPos();
-                    g2d.setColor( Color.decode( circle.getColor() ) );
-                    g2d.fillArc( circle.getX(), circle.getY(), circle.getRadius(), circle.getRadius(), 0, 360 );
-                    g2d.drawArc( circle.getX(), circle.getY(), circle.getRadius(), circle.getRadius(), 0, 360 );
-                    break;
-                case RECT:
-                    Rectangle rect = shapeGen.getRectAtRandPos();
-                    g2d.setColor( Color.decode( rect.getColor() ) );
-                    g2d.fillRect( rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight() );
-                    g2d.drawRect( rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight() );
-                    break;
-                case SQUARE:
-                    Square square = shapeGen.getSquareAtRandPos();
-                    g2d.setColor( Color.decode( square.getColor() ) );
-                    g2d.fillRect( square.getX(), square.getY(), square.getSide(), square.getSide() );
-                    g2d.drawRect( square.getX(), square.getY(), square.getSide(), square.getSide() );
-                    break;
-                default:
-                    break;
-
-            }
-
-            --shapesToDraw;
-
+        for (Shape shape : shapes) {
+            shape.render(g2d);
         }
-
 
     }
 

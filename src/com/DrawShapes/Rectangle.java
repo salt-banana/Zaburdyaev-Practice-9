@@ -1,5 +1,7 @@
 package com.DrawShapes;
 
+import java.awt.*;
+
 public class Rectangle extends Shape {
 
     protected int width;
@@ -45,6 +47,14 @@ public class Rectangle extends Shape {
     @Override
     public double getPerimeter() {
         return 2 * (this.width + this.height);
+    }
+
+
+    @Override
+    public void render(Graphics2D g2d) {
+        g2d.setColor( Color.decode( this.getColor() ) );
+        g2d.fillRect( this.getX(), this.getY(), this.getWidth(), this.getHeight() );
+        g2d.drawRect( this.getX(), this.getY(), this.getWidth(), this.getHeight() );
     }
 
 

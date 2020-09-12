@@ -1,5 +1,7 @@
 package com.DrawShapes;
 
+import java.awt.*;
+
 public class Square extends Rectangle {
 
     public Square() {}
@@ -33,6 +35,15 @@ public class Square extends Rectangle {
     @Override
     public void setHeight(int height) {
         this.setSide(height);
+    }
+
+
+
+    @Override
+    public void render(Graphics2D g2d) {
+        g2d.setColor( Color.decode( this.getColor() ) );
+        g2d.fillRect( this.getX(), this.getY(), this.getSide(), this.getSide() );
+        g2d.drawRect( this.getX(), this.getY(), this.getSide(), this.getSide() );
     }
 
 

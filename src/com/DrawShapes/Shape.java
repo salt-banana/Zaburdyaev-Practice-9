@@ -1,5 +1,7 @@
 package com.DrawShapes;
 
+import java.awt.*;
+
 public abstract class Shape {
 
     protected String color;
@@ -40,6 +42,10 @@ public abstract class Shape {
 
     public abstract double getArea();
     public abstract double getPerimeter();
+
+
+
+    public abstract void render(Graphics2D g2d);
 
 
 
