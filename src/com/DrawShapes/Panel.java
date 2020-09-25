@@ -23,6 +23,7 @@ public class Panel extends JPanel {
     private final int AMOUNT_OF_SHAPES = 3;
 
 
+
     public Panel() {
         this.setPreferredSize(new Dimension(WINDOW_WIDTH,WINDOW_HEIGHT));
         this.genShapes();
@@ -72,9 +73,7 @@ public class Panel extends JPanel {
 
         Graphics2D g2d = (Graphics2D) g;
 
-
         this.setBackground(Color.WHITE);
-
 
 
         for (Shape shape : shapes) {
@@ -82,5 +81,6 @@ public class Panel extends JPanel {
         }
 
     }
+
 
 }
